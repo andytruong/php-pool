@@ -1,0 +1,12 @@
+{
+  "name":     "andytruong/php-pool",
+  "license":  "MIT",
+  "autoload": {
+    "psr-4": {
+      "andytruong\\pool\\": "./"
+    }
+  },
+  "require":  {
+    "ext-pcntl": "*"
+  }
+}
