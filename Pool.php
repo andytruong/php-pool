@@ -4,18 +4,23 @@ namespace andytruong\pool;
 
 class Pool
 {
-    private $max;
+    private $size;
     private $forks = [];
 
-    public function __construct(int $max)
+    public function __construct(int $size = 5)
     {
-        $this->max = $max;
+        $this->setSize($size);
+    }
+
+    public function setSize(int $size)
+    {
+        $this->size = $size;
     }
 
     public function add(callable $callback)
     {
         // some other process is running, waiting for available slot.
-        if ($this->max <= count($this->forks)) {
+        if ($this->size <= count($this->forks)) {
             $pid = pcntl_wait($_);
             unset($this->forks[$pid]);
         }
