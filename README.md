@@ -20,3 +20,6 @@ foreach ($tasks as $task) {
 
 $pm->wait();
 ```
+## Install
+
+    composer require andytruong/php-pool
