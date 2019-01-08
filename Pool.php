@@ -17,7 +17,7 @@ class Pool
         $this->size = $size;
     }
 
-    public function add(callable $callback)
+    public function execute(callable $callback)
     {
         // some other process is running, waiting for available slot.
         if ($this->size <= count($this->forks)) {
