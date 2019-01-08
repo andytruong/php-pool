@@ -1,6 +1,8 @@
 PHP pool
 ====
 
+Run tasks in parallel with limited threads.
+
 Example usage:
 
 ```php
