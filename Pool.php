@@ -17,7 +17,7 @@ class Pool
         $this->size = $size;
     }
 
-    public function execute(callable $callback)
+    public function execute(callable $callback, array $arguments = [])
     {
         // some other process is running, waiting for available slot.
         if ($this->size <= count($this->forks)) {
@@ -27,11 +27,11 @@ class Pool
 
         switch ($pid = pcntl_fork()) {
             case 0:
-                call_user_func($callback);
+                call_user_func_array($callback, $arguments);
                 exit;
 
             case -1:
-                call_user_func($callback);
+                call_user_func_array($callback, $arguments);
                 break;
 
             default:
