@@ -17,7 +17,7 @@ foreach ($tasks as $task) {
             sleep(5); # slow task process
             echo "[callback] completed {$task}" . PHP_EOL;
         },
-        $task
+        [$task]
     );
 }
 
