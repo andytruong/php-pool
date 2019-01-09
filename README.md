@@ -12,11 +12,12 @@ $pool = new andytruong\pool\Pool($poolSize = 3);
 $tasks = [1, 2, 3, 4, 5];
 foreach ($tasks as $task) {
     $pool->execute(
-        function() use ($task) {
+        function($task) {
             echo "[callback] processing {$task}" . PHP_EOL;
             sleep(5); # slow task process
             echo "[callback] completed {$task}" . PHP_EOL;
-        }
+        },
+        $task
     );
 }
 
